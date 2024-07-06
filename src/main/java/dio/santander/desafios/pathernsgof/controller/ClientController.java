@@ -25,7 +25,7 @@ public class ClientController {
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<Object> findById(@PathVariable Long id){
-        return ResponseEntity.status(HttpStatus.OK).body(services.findAll());
+        return ResponseEntity.status(HttpStatus.OK).body(services.getById(id));
     }
 
     @PostMapping

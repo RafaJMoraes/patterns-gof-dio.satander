@@ -31,19 +31,17 @@ public class ClientServicesImpl implements ClientServices {
     @Override
     public void create(ClientDto clientDto) {
         Client client = new Client();
-        client.setAddress(findAddress(client.getAddress().getCep()));
         BeanUtils.copyProperties(clientDto, client);
+        client.setAddress(findAddress(clientDto.getAddress().getCep()));
         repository.save(client);
     }
 
     private Address findAddress(String cep) {
-        Address address;
-        address = addressRepository.findByCep(cep).orElseGet(() -> {
+        return addressRepository.findByCep(cep).orElseGet(() -> {
             Address newAddress = viaCEPService.foundCEP(cep);
-            addressRepository.save(newAddress);
+            addressRepository.saveAndFlush(newAddress);
             return newAddress;
         });
-        return address;
     }
 
     @Override
@@ -53,16 +51,19 @@ public class ClientServicesImpl implements ClientServices {
 
     @Override
     public void update(Long id, ClientDtoUpdate clientDto) {
-
+        Client client = getById(id);
+        client.setName(clientDto.getName());
+        client.setAddress(findAddress(clientDto.getAddress().getCep()));
+        repository.save(client);
     }
 
     @Override
     public void delete(Long id) {
-
+        repository.deleteById(id);
     }
 
     @Override
     public List<Client> findAll() {
-        return List.of();
+        return repository.findAll();
     }
 }

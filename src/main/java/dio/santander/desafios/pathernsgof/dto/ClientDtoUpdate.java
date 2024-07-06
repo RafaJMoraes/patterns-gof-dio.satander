@@ -10,6 +10,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClientDtoUpdate {
+public class ClientDtoUpdate extends ClientDtoAbstract{
     private Long id;
 }
