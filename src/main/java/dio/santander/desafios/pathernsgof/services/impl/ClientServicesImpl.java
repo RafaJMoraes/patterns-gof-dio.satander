@@ -15,9 +15,9 @@ import java.util.List;
 @Service
 public class ClientServicesImpl implements ClientServices {
 
-
     @Autowired
     private ClientRepository repository;
+
 
     @Override
     public void create(ClientDto clientDto) {
@@ -32,7 +32,7 @@ public class ClientServicesImpl implements ClientServices {
     }
 
     @Override
-    public void update(ClientDtoUpdate clientDto) {
+    public void update(Long id, ClientDtoUpdate clientDto) {
 
     }
 

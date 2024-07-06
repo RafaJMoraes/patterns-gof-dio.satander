@@ -10,7 +10,7 @@ public interface ClientServices {
 
     void create(ClientDto clientDto);
     Client getById(Long id);
-    void update(ClientDtoUpdate clientDto);
+    void update(Long id, ClientDtoUpdate clientDto);
     void delete(Long id);
     List<Client> findAll();
 }

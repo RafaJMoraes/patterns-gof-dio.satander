@@ -1,11 +1,12 @@
 package dio.santander.desafios.pathernsgof.domain;
 
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.web.bind.annotation.Mapping;
+
+import java.time.LocalDateTime;
 
 @MappedSuperclass
 public class AbstractDomain {
@@ -14,4 +15,8 @@ public class AbstractDomain {
     @Id
     private Long id;
 
+    @CreatedDate
+    private LocalDateTime createdDate;
+
+    private LocalDateTime updateDate;
 }

@@ -7,7 +7,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_client",catalog = "tabela de clientes da aplicacao teste")
+@Table(name = "tb_client")
 public class Client extends AbstractDomain {
 
     private String name;
